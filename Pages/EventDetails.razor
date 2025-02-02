@@ -1,0 +1,36 @@
+@page "/eventdetails/{eventId:int}"
+
+<h3>Event Details</h3>
+<p>Showing details for event ID: @EventId</p>
+
+@code {
+    [Parameter]
+    public int EventId { get; set; }
+
+    // Simulating event data retrieval based on the ID (mock data for now)
+    private string eventName = "Event Name Placeholder";
+    private string eventLocation = "Event Location Placeholder";
+    private DateTime eventDate = DateTime.Now;
+
+    protected override void OnParametersSet()
+    {
+        // Simulate retrieving the event details (replace with actual data retrieval later)
+        if (EventId == 1)
+        {
+            eventName = "Corporate Tech Meetup";
+            eventLocation = "Berlin";
+            eventDate = new DateTime(2025, 5, 20);
+        }
+        else if (EventId == 2)
+        {
+            eventName = "Annual Charity Gala";
+            eventLocation = "Munich";
+            eventDate = new DateTime(2025, 6, 15);
+        }
+    }
+}
+<div class="event-card">
+    <h4>@eventName</h4>
+    <p>Date: @eventDate.ToShortDateString()</p>
+    <p>Location: @eventLocation</p>
+</div>

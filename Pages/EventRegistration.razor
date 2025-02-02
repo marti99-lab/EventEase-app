@@ -1,0 +1,49 @@
+@page "/eventregistration"
+@using EventEaseApp.Models
+
+
+<h3>Event Registration</h3>
+
+@if (!string.IsNullOrEmpty(ErrorMessage))
+{
+    <p style="color: red;">@ErrorMessage</p>
+}
+
+<EditForm Model="@RegistrationModel" OnValidSubmit="HandleSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label for="name">Name:</label>
+        <InputText id="name" @bind-Value="RegistrationModel.Name" />
+        <ValidationMessage For="@(() => RegistrationModel.Name)" />
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        <InputText id="email" @bind-Value="RegistrationModel.Email" />
+        <ValidationMessage For="@(() => RegistrationModel.Email)" />
+    </div>
+
+    <button type="submit">Register</button>
+</EditForm>
+
+@code {
+    private RegistrationModel RegistrationModel = new RegistrationModel();
+
+    private string? ErrorMessage;
+
+    private async Task HandleSubmit()
+    {
+        try
+        {
+            await Task.Delay(1000); // Simulate async work
+            RegistrationModel = new RegistrationModel(); // Clear form data
+            ErrorMessage = null;
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"An error occurred: {ex.Message}";
+        }
+    }
+}

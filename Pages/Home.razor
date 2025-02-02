@@ -1,0 +1,17 @@
+﻿@page "/"
+
+<h3>Upcoming Events in Nordrhein-Westfalen</h3>
+
+<EventCard EventId="1" EventName="Tech Conference Düsseldorf" EventDate="@dusseldorfEvent" Location="Düsseldorf" />
+<EventCard EventId="2" EventName="Startup Summit Cologne" EventDate="@cologneEvent" Location="Cologne (Köln)" />
+<EventCard EventId="3" EventName="Innovation Expo Dortmund" EventDate="@dortmundEvent" Location="Dortmund" />
+<EventCard EventId="4" EventName="AI Forum Essen" EventDate="@essenEvent" Location="Essen" />
+<EventCard EventId="5" EventName="Green Energy Conference Bonn" EventDate="@bonnEvent" Location="Bonn" />
+
+@code {
+    private DateTime dusseldorfEvent = new DateTime(2025, 5, 15);
+    private DateTime cologneEvent = new DateTime(2025, 6, 10);
+    private DateTime dortmundEvent = new DateTime(2025, 7, 5);
+    private DateTime essenEvent = new DateTime(2025, 8, 20);
+    private DateTime bonnEvent = new DateTime(2025, 9, 12);
+}
